@@ -1,6 +1,6 @@
 public with sharing class actionFunctionController {
 Public Integer value{get;set;}
-public boolean flag;
+public boolean flag1;
     public actionFunctionController()
     {
     value=1;
