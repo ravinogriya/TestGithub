@@ -3,6 +3,7 @@
  */
 public with sharing class CommunitiesLandingController {
     
+    public String communities;
     // Code we will invoke on page load.
     public PageReference forwardToStartPage() {
         return Network.communitiesLanding();
