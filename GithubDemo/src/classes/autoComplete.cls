@@ -2,6 +2,7 @@ public with sharing class autoComplete {
 
     public map<String,String> finalMap{get;set;}
     public String store{get;set;}
+    Integer inte{get;set;}
     public autoComplete()
     {
          finalMap=new Map<String,String>();
