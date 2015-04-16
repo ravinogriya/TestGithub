@@ -1,5 +1,6 @@
 public with sharing class actionPollarController {
     public Integer value{get;set;}
+    public boolean flag;
     public actionPollarController()
     {
     value=1;
