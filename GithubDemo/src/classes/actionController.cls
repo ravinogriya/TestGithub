@@ -1,5 +1,6 @@
 public with sharing class actionController {
 
+    public string str{get;set;}
     private String state='no';
     public PageReference methodOne() {
         return null;
