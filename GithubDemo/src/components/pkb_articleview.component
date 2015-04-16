@@ -1,0 +1,78 @@
+<apex:component allowDML="true" controller="submitter">
+<apex:attribute name="pkbCon" type="pkb_Controller" required="true" description="handle to the pkb controller" />
+<apex:attribute name="showFeedbackYesNo" type="Boolean" required="true" description="flag to indicate if Yes/No buttons should be shown" />
+<apex:attribute name="showBackLinks" type="Boolean" required="true" description="flag to indicate if 'back to...' buttons should be shown" />
+<apex:includeScript value="//ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"/>  
+   <apex:stylesheet value="{!URLFOR($Resource.rating, '/rating/css/bootstrap.min.css')}"/>
+   <apex:stylesheet value="{!URLFOR($Resource.rating, '/rating/css/star-rating.css')}"/>
+   <apex:includeScript value="{!URLFOR($Resource.rating, '/rating/js/star-rating.js')}"/>
+   <script type="text/javascript">
+   newjs = jQuery.noConflict( true );
+   newjs(document).ready(function () {
+   
+     newjs("#inputstar").rating({
+            starCaptions: function(val) {
+               if (val < 3) {
+                    return val;
+                } else {
+                    return 'high';
+                }
+            },
+            starCaptionClasses: function(val) {
+                if (val < 3) {
+                    return 'label label-danger';
+                } else {
+                    return 'label label-success';
+                }
+            }
+        });
+  }); 
+  
+  </script>
+<apex:variable var="pageNum" value="{!pkbCon.pageNumParam}={!pkbCon.currPage}" />
+
+  <div style="margin-bottom: 5px;">
+    <h2 class="section">&nbsp;</h2>
+    </div>
+
+    <div class="articleViewIcons">
+      <c:pkb_articleicons pkbCon="{!pkbCon}" />
+    </div>
+    
+      <apex:outputPanel layout="block" rendered="{!AND(showBackLinks, NOT(pkbCon.facebook))}" id="backbutton" style="margin-bottom: 5px;">
+          <apex:outputText rendered="{!pkbCon.displaySearchResultsLink}">
+            <a class="relatedLink" href="{!$Site.CurrentSiteUrl}?{!pkbCon.allSearchParams}&{!pageNum}">&lt; {!$Label.PKB2_Back_To_Results}</a>
+          </apex:outputText>
+          <apex:outputText rendered="{!NOT(pkbCon.displaySearchResultsLink)}">
+            <a class="relatedLink" href="{!$Site.CurrentSiteUrl}">&lt; {!$Label.PKB2_Back_To_Search_Page}Hello</a>
+          </apex:outputText>
+      </apex:outputPanel>
+
+    <div style="width: 100%;" id="articleContainer">
+      <apex:insert name="body" />
+      <apex:outputPanel layout="block" style="margin-top: 20px; margin-bottom: 20px;" rendered="{!NOT(pkbCon.isSite)}">
+      <i>Viewing the PKB from a normal salesforce url (instead of through a Sites url) is for testing purposes only. No article content will render on this page, 
+      but all other PKB functionality can be tested.</i>
+      </apex:outputPanel>
+    </div>
+   <apex:outputText rendered="{!pkbCon.facebook}">
+      <c:pkb_related pkbCon="{!pkbCon}" />
+   </apex:outputText>
+  <apex:outputPanel layout="block" styleClass="feedbackContainer" rendered="{!showFeedbackYesNo}">
+   <hr/>
+     <h2>Give your rating to this article</h2>
+    <div class="container">
+    <apex:form >
+        <input id="inputstar" value="0" type="number" min="0" max="5" step="0.2" data-size="sm" style="display: none;"/>
+        <br/>
+         <div class="clearfix"></div>
+        <div class="form-group">  
+           <apex:commandButton value="Submit" action="{!submit}"/>
+           <apex:commandButton value="Reset" action="{!reset}"/>
+        </div>
+    </apex:form>
+    </div>      
+    <c:pkb_feedbackyesno pkbCon="{!pkbCon}" />
+  </apex:outputPanel>
+
+</apex:component>

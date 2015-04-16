@@ -1,0 +1,4 @@
+<apex:page sidebar="false" showheader="false">
+     <apex:flash src="http://www.adobe.com/devnet/flash/samples/drawing_1/1_coordinates.swf" 
+     height="300" width="100%" />
+</apex:page>

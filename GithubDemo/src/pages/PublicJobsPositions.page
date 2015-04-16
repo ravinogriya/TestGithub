@@ -1,0 +1,14 @@
+<apex:page standardController="Position__c" recordSetVar="Positions">
+
+    <h1>Welcome to the Universal Containers Careers Home Page!</h1>
+        <p>Universal Containers is an industry leader, and to stay ahead of the pack, we need to grow! We are currently seeking bright and talented professionals to join our winning team.  Browse the current openings below, and send in your resume via email to apply today.</p>
+        <br />
+  
+    
+    <apex:dataTable value="{!positions}" var="pos">
+    <apex:column >
+     <apex:outputLabel value="{!pos.name}"></apex:outputLabel></apex:column>
+     <apex:column value="{!pos.ownerId}"/>
+    </apex:dataTable>
+
+</apex:page>

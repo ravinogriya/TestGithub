@@ -1,0 +1,5 @@
+<apex:page sidebar="false" showheader="false">
+     <apex:flash src="" 
+     height="300" width="100%" />
+     <apex:iframe src="http://www.cricbuzz.com/includes/ads/schedule/home_wigets/315x110_homewidget_feb13_rev.swf" scrolling="true" id="theIframe"/>
+</apex:page>

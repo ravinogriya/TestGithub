@@ -1,0 +1,12 @@
+<apex:page >
+  <apex:includeScript value="{!$Resource.Supervisor}"/>
+  <script src="/jslibrary/1416323438000/sfdc/LiveAgentSupervisorTab.js"  type="text/javascript"></script>
+    
+
+
+
+<link class="user" href="/sCSS/32.0/sprites/1416965220000/Theme3/default/gc/LiveAgentSupervisor.css" rel="stylesheet" type="text/css" />
+<script>
+  console.log(liveagent.supervisor.getAgents());
+</script>
+</apex:page>

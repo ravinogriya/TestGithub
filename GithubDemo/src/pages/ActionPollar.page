@@ -1,0 +1,10 @@
+<apex:page controller="actionPollarController">
+ <apex:outputPanel id="result">
+    <apex:pageMessages ></apex:pageMessages>
+ </apex:outputPanel>
+ <apex:form >
+   <apex:inputText >
+       <apex:actionSupport action="{!timesTwo}" event="onfocus" reRender="result"/>
+   </apex:inputText>
+ </apex:form>
+</apex:page>

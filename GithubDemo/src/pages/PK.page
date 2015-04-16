@@ -1,0 +1,39 @@
+<apex:page standardController="Lead">
+ <apex:includeScript value="/support/console/22.0/integration.js"/>
+    <script type="text/javascript">
+    var x;
+        function testOpenSubtab(element) {
+         x=element.href;
+            //First find the ID of the primary tab to put the new subtab in
+            sforce.console.getEnclosingPrimaryTabId(openSubtab);
+        }
+        
+        var openSubtab = function openSubtab(result) {
+            //Now that we have the primary tab ID, we can open a new subtab in it
+            var primaryTabId = result.id;
+            sforce.console.openSubtab(primaryTabId ,x, true, 
+                'Knowledge Article', null, openSuccess, 'Knowledge Article');
+        };
+        var openSuccess = function openSuccess(result) {
+            //Report whether we succeeded in opening the subtab
+            if (result.success == true) {
+                alert('subtab successfully opened');
+            } else {
+                alert('subtab cannot be opened');
+            }
+        };
+    </script>
+
+   <apex:outputPanel layout="block">
+    <ul>
+        <knowledge:articleList articleVar="article"
+            
+            sortBy="mostViewed"
+            pageSize="10"
+            keyword="{!lead.Subject__c}"
+        >
+            <li><a href="{!URLFOR($Action.KnowledgeArticle.View, article.id)}" onclick="testOpenSubtab(this);return false">{!article.title}</a></li>
+        </knowledge:articleList>
+    </ul>
+</apex:outputPanel>
+</apex:page>

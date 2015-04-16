@@ -1,0 +1,11 @@
+<apex:page controller="PieChatController" title="Pie Chart">
+
+<h1 align="center"> Account and Number of Employees Pie Chat</h1>
+<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;This show the size of the orginization the number of employees in the organization will show the 
+Strength of the organization</p>
+    <apex:chart height="350" width="450" data="{!pieData}">
+        <apex:pieSeries dataField="data" labelField="name"/>
+        <apex:legend position="right"/>
+    </apex:chart>
+ 
+</apex:page>

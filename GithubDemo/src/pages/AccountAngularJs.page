@@ -1,0 +1,41 @@
+<apex:page >
+    <apex:includeScript value="https://ajax.googleapis.com/ajax/libs/angularjs/1.3.14/angular.min.js"/>
+    <c:sObjectRemote />
+    <script>
+        var vfApp = angular.module('vfApp',[]);
+        vfApp.controller('vfappController',function($scope){
+            $scope.accounts = []
+            $scope.getAccounts = function(){
+                sObject.query('SELECT CaseNumber,subject,Priority,Origin FROM Case LIMIT 200',function(result){
+                    $scope.accounts = result;
+                    $scope.$apply();
+                })
+            }
+            $scope.getAccounts();
+        });
+    </script>
+    <div ng-app="vfApp" ng-controller="vfappController">
+        <apex:sectionHeader title="AngularJS" subtitle="AngularJS & SObject Remote"/>
+        <apex:pageBlock >
+            <!-- Borrow some styling from Pageblock table -->
+            <table class="list" border="0" cellpadding="0" cellspacing="0" id="contactsTable">
+                <thead class="rich-table-thead">
+                    <tr class="headerRow ">
+                        <th class="headerRow">Case Number</th>
+                        <th class="headerRow">Subject</th>
+                        <th class="headerRow">Priority</th>
+                        <th class="headerRow">Origin</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr ng-repeat="a in accounts" class="dataRow" onmouseover="if (window.hiOn){hiOn(this);} " onmouseout="if (window.hiOff){hiOff(this);} " onblur="if (window.hiOff){hiOff(this);}" onfocus="if (window.hiOn){hiOn(this);}">
+                        <td class="dataCell">{{a.CaseNumber}}</td>
+                        <td class="dataCell">{{a.subject}}</td>
+                        <td class="dataCell">{{a.Priority}}</td>
+                        <td class="dataCell">{{a.Origin}}</td>
+                    </tr>
+                </tbody>
+            </table>
+        </apex:pageBlock>
+    </div>
+</apex:page>

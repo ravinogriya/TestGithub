@@ -1,0 +1,21 @@
+<apex:page controller="ObjectRetreieve">
+
+    <apex:form >
+     
+   <apex:selectList size="1" value="{!SelectedObject}">
+   
+          <apex:actionSupport event="onchange" action="{!getStore}" />
+    
+      <apex:selectOptions value="{!ObjectName}">
+         
+       </apex:selectOptions>
+   </apex:selectList>
+   
+   <apex:selectList size="1" id="sfield">
+       <apex:selectOptions value="{!fieldName}">
+       
+       </apex:selectOptions>
+   </apex:selectList>
+         
+    </apex:form>
+</apex:page>

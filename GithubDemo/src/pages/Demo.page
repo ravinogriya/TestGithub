@@ -1,0 +1,7 @@
+<apex:page controller="Store">
+<apex:form >
+First Name:<apex:inputText /><br/>
+Second Name:<apex:inputText /><br/>
+<apex:commandButton value="Submit" action="{!save}"/>
+</apex:form>
+</apex:page>

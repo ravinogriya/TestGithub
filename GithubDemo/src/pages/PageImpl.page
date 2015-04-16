@@ -1,0 +1,8 @@
+<apex:page Standardcontroller="Account" docType="html-5.0">
+
+ <apex:form >
+ <apex:commandButton action="{!save}" value="Save"/>
+ Account <apex:inputField value="{!Account.name}" id="theTextInput" label="Account Name"/>
+  
+ </apex:form>
+</apex:page>

@@ -1,0 +1,32 @@
+<apex:page controller="actionController">
+------------------------Action Function and Action Status------------
+ <apex:form >
+    <apex:actionFunction name="sayHello" action="{!sayHello}" rerender="out" status="myStatus"/>
+ </apex:form>
+  <apex:outputPanel id="out">
+       <apex:outputtext value="Hello"/>
+       <apex:actionStatus startText="Requestion......." id="mystatus">
+          <apex:facet name="stop"> {!username}</apex:facet>
+       </apex:actionStatus>
+    <script>window.setTimeout(sayHello,2000)</script>
+  </apex:outputPanel>
+  
+     <p><apex:outputText value="Clicked? {!state}" id="showstate"/></p> 
+      <apex:outputPanel onclick="methodOneInJavascript('Yes!')" styleClass="btn"> 
+             Click Me
+      </apex:outputPanel>
+      
+  <apex:form >
+    <apex:actionFunction action="{!methodOne}" name="methodOneInJavascript" rerender="showstate">
+        <apex:param name="firstParam" assignTo="{!state}" value="" />
+    </apex:actionFunction>
+  </apex:form>
+  
+  -----------------------Action Pollar Example -----------------------
+ <apex:form >
+   <apex:outputText value="Counter value: {!count}" id="counter"/>
+   <apex:actionPoller action="{!incrementCounter}" rerender="counter" interval="15"/>
+ </apex:form>
+ 
+ 
+</apex:page>

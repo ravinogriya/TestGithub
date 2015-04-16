@@ -1,0 +1,54 @@
+<apex:page >
+  <apex:includeScript value="https://ajax.aspnetcdn.com/ajax/jQuery/jquery-1.7.2.min.js"/>
+  <apex:includeScript value="https://ap1.salesforce.com/static/111213/js/perf/stub.js"/>
+  
+  <script src="/soap/ajax/32.0/connection.js" type="text/javascript"></script>     
+  <script>
+
+    jQuery(document).ready(function($) {
+      // Pull 10 Accounts via the REST API
+    var result = sforce.connection.login("farooq@ahmed.com", "Test@1234");
+    sforce.connection.init('{!$Api.Session_ID}', 'https://w4dq.la1t1.salesforceliveagent.com/chat/rest/System/SessionId'); // here pass current session id of the org from which you are making request.
+
+    sforce.connection.remoteFunction({
+           url : 'https://w4dq.la1t1.salesforceliveagent.com/chat/rest/System/SessionId',
+           requestHeaders: {"Authorization":"Bearer "+result.sessionId, "Content-Type":"application/json","X-LIVEAGENT-API-VERSION": "32","X-LIVEAGENT-AFFINITY": "null"}, // here pass the session id of the org in which you have your REST service
+           //requestData: data to post in JSON format,
+           method: "GET",
+           onSuccess : function(response) {
+           
+                  console.log(response);
+                  response = JSON.parse(response);
+                  alert(response);
+                  alert(response["affinityToken"]);
+                   alert(response["key"]);
+                
+           sforce.connection.remoteFunction({
+               
+           url : 'https://w4dq.la1t1.salesforceliveagent.com/chat/rest/Agent/AgentLogin',
+           requestHeaders: {"Authorization":"Bearer "+result.sessionId,"X-LIVEAGENT-API-VERSION": "30","X-LIVEAGENT-AFFINITY": response["affinityToken"],"X-LIVEAGENT-SESSION-KEY":response["key"],"X-LIVEAGENT-SEQUENCE":"1","Access-Control-Allow-Origin":"*","Access-Control-Allow-Credentials": "true"
+}, // here pass the session id of the org in which you have your REST service
+           requestData: {"organizationId": "00D90000000xZQM" ,"sfdcSessionId":"{!$Api.Session_ID}"},
+           method: "POST",
+           onSuccess : function(response) {
+                  console.log(response);
+                  alert("response="+response);
+              },
+           onFailure : function(response) {
+                  alert("Failed" + response)
+              }
+       });    
+                  
+              },
+           onFailure : function(response) {
+                  alert("Failed" + response)
+              }
+       });
+    });
+  </script>
+  <h1>Test REST API Without Proxy</h1>
+  <p>10 Accounts:</p>
+  <ul id="accountList">
+  {!$Api.Session_ID}
+  </ul>
+</apex:page>

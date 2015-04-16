@@ -1,0 +1,5 @@
+<apex:page standardController="Candiate__c" >
+<apex:form >
+<apex:outputField value="{!Candiate__c.Name}"/>
+</apex:form>
+</apex:page>

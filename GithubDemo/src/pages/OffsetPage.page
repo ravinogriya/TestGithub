@@ -1,0 +1,17 @@
+<apex:page controller="OffSet">
+ <apex:form >
+ <apex:pageBlock >
+ 
+     <apex:pageblockTable value="{!Account}" var="a">
+      <apex:column value="{!a.id}"/>
+      <apex:column value="{!TotalSize}"/>
+      
+      <apex:column value="{!a.casenumber}"/>
+     </apex:pageblockTable>
+     <apex:commandButton action="{!first}" value="First" disabled="{!first}"/>
+     <apex:commandButton action="{!previous}" value="Previous" disabled="{!previous}"/>
+     <apex:commandButton action="{!next}" value="next" disabled="{!next}"/>
+     <apex:commandButton action="{!last}" value="last" disabled="{!last}"/>
+ </apex:pageBlock>
+ </apex:form>
+</apex:page>

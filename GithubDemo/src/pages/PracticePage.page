@@ -1,0 +1,14 @@
+<apex:page controller="PracticeController">
+<apex:form >
+    <apex:outputPanel id="counter">
+      <apex:OutPutText value="Click Me: {!count}"></apex:OutPutText>
+      <apex:actionSupport event="onclick" action="{!incrementCounter}" rerender="counter" status="counterStatus"/>
+    </apex:outputPanel>
+
+    <apex:actionStatus id="counterStatus" StartText="(incrementing.........)" stopText=" (done)" />
+   <apex:outputPanel id="mouseover"> 
+    <apex:OutputText value="MouseOverMe  {!count}"/>
+    <apex:actionSupport event="onmouseover" action="{!incrementCounter}" reRender="mouseover"/>
+   </apex:outputPanel>
+</apex:form>
+</apex:page>
