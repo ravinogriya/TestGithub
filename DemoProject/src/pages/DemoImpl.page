@@ -1,0 +1,326 @@
+<apex:page >
+    <link class="user" href="/sCSS/32.0/sprites/1417474122000/Theme3/default/gc/LiveAgentSupervisor.css"
+    rel="stylesheet" type="text/css" />
+    <script src="https://c.la1t1.salesforceliveagent.com/content/g/js/32.0/supervisor.js"
+    type="text/javascript"></script>
+    <script src="/jslibrary/1416323438000/sfdc/LiveAgentSupervisorTab.js"
+    type="text/javascript"></script>
+    <script src="/jslibrary/1416323438000/sfdc/LiveAgentSupervisorTabSccIntegration.js"
+    type="text/javascript"></script>
+    <a href="#skiplink" class="navSkipLink zen-skipLink zen-assistiveText">Skip to main content</a>
+    <a
+    name="skiplink"><img src="/s.gif" height='1' width='1' alt="Content Starts Here"
+        class="skiplink skipLinkTargetInner zen-skipLinkTarget"
+        title="Content Starts Here" />
+        </a><span id="j_id0"></span>
+        <!--<div class="bPageTitle">
+
+<div class="ptBody secondaryPalette brandSecondaryBrd">
+<div class="content">
+<img src="/s.gif" class="pageTitleIcon" title="Live Agent" alt="Live Agent" />
+ <h1 class="pageType">Live Agent Supervisor</h1>
+  <span class="titleSeparatingColon">:</span>
+   <h2 class="pageDescription">Overview</h2>
+    <div class="blank"></div></div>
+        <div class="links">
+            <a href="javascript:openPopupFocusEscapePounds('https://login.salesforce.com/services/auth/sso/00D30000000XsfGEAS/HTAuthProvider?startURL=%252Fapex%252Fhtdoor%253Floc%253Dhelp%2526target%253Dlive_agent_support_supervisors_intro.htm%2526section%253DCustomizing%2526language%253Den_US%2526release%253D192.14.3%2526instance%253DAP1&site=https%3A%2F%2Fhelp.salesforce.com', 'Help', 1024, 768, 'width=1024,height=768,resizable=yes,toolbar=yes,status=yes,scrollbars=yes,menubar=yes,directories=no,location=yes,dependant=no', false, false);"
+            title="Help for this Page (New Window)"><span class="helpLink">Help for this Page</span><img
+                src="/s.gif" alt="" class="helpIcon"
+                title="" />
+            </a>
+        </div>
+        </div>
+        </div>-->
+        <div id="j_id0:mainPanel" class="mainPanelStyleClass supervisorState_normal">
+            <div class="LA_Error">
+                <table>
+                    <tr>
+                        <td>
+                            <a class="LA_Error_Img"></a>
+                        </td>
+                        <td>
+                            <div class="LA_Error_Title" id="errorTitle"></div>
+                            <div class="LA_Error_Text" id="errorText"></div>
+                        </td>
+                    </tr>
+                </table>
+            </div>
+            <div class="LA_Warning">
+                <table>
+                    <tr>
+                        <td>
+                            <a class="LA_Warning_Img"></a>
+                        </td>
+                        <td>
+                            <div class="LA_Warning_Title" id="warningTitle">Connection Error
+                            </div>
+                            <div class="LA_Warning_Text" id="warningText">Please wait ...
+                            </div>
+                        </td>
+                    </tr>
+                </table>
+            </div>
+            <div class="apexp">
+                <div id="j_id0:j_id7" class="bPageBlock brandSecondaryBrd apexDefaultPageBlock secondaryPalette">
+                    <div class="pbHeader">
+                        <table class="LA_Expanded">
+                            <tr>
+                                <td class="pbTitle">
+                                    <a class="LA_Expansion_Toggle" onclick="SfdcApp.LiveAgent.Supervisor.togglePanel(Sfdc.Dom.getParent(this, 'table'), document.getElementById('j_id0:j_id7:queuePanel').parentNode)"></a>
+                                    <h3 class="mainTitle">Queue Status</h3>
+                                </td>
+                            </tr>
+                        </table>
+                    </div>
+                    <div class="pbBody">
+                        <table class="list supervisorQueues"
+                        id="j_id0:j_id7:queuePanel" border="0"
+                        cellpadding="0" cellspacing="0">
+                            <colgroup span="4"></colgroup>
+                            <thead class="">
+                                <tr class=" headerRow ">
+                                    <th class=" headerRow  " scope="col"
+                                    colspan="1" id="j_id0:j_id7:queuePanel:j_id9header">
+                                        <div id="j_id0:j_id7:queuePanel:j_id9header:sortDiv">Button Name</div>
+                                    </th>
+                                    <th class=" headerRow  " scope="col"
+                                    colspan="1" id="j_id0:j_id7:queuePanel:j_id10header">
+                                        <div id="j_id0:j_id7:queuePanel:j_id10header:sortDiv">ID</div>
+                                    </th>
+                                    <th class=" headerRow  " scope="col"
+                                    colspan="1" id="j_id0:j_id7:queuePanel:j_id11header">
+                                        <div id="j_id0:j_id7:queuePanel:j_id11header:sortDiv">Queue Length</div>
+                                    </th>
+                                    <th class=" headerRow  " scope="col"
+                                    colspan="1" id="j_id0:j_id7:queuePanel:j_id12header">
+                                        <div id="j_id0:j_id7:queuePanel:j_id12header:sortDiv">Longest Wait</div>
+                                    </th>
+                                </tr>
+                            </thead>
+                            <tbody id="j_id0:j_id7:queuePanel:tb"></tbody>
+                        </table>
+                    </div>
+                    <div class="pbFooter secondaryPalette">
+                        <div class="bg"></div>
+                    </div>
+                </div>
+            </div>
+            <div class="apexp">
+                <div id="j_id0:j_id13" class="bPageBlock brandSecondaryBrd apexDefaultPageBlock secondaryPalette">
+                    <div class="pbHeader">
+                        <table class="LA_Expanded">
+                            <tr>
+                                <td class="pbTitle">
+                                    <a class="LA_Expansion_Toggle" onclick="SfdcApp.LiveAgent.Supervisor.togglePanel(Sfdc.Dom.getParent(this, 'table'), document.getElementById('j_id0:j_id13:agentPanel').parentNode)">&gt;</a>
+                                    <h3 class="mainTitle">Agent Status</h3>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <div class="agentFilterPanel">
+                                        <span class="agentFilterPanelTitle">Filters</span>
+
+                                        <select class="LA_Skill_Selector" onchange="SfdcApp.LiveAgent.Supervisor.filterQueues();SfdcApp.LiveAgent.Supervisor.filterAgents();">
+                                            <option id="ANY_OPTION" selected="selected"
+                                            value="ANY">All Skills</option>
+                                        </select>
+
+                                        <select class="LA_Queue_Selector" onchange="SfdcApp.LiveAgent.Supervisor.filterAgents();">
+                                            <option id="ANY_QUEUE_OPTION" selected="selected"
+                                            value="ANY">All Buttons</option>
+                                        </select>
+
+                                        <select class="LA_AgentStatus_Selector" onchange="SfdcApp.LiveAgent.Supervisor.filterAgents();">
+                                            <option id="ANY_OPTION" selected="selected"
+                                            value="ANY">All Statuses</option>
+                                            <option id="Online" value="online">Online</option>
+                                            <option id="Away" value="away">Away</option>
+                                            <option id="Offline" value="offline">Offline</option>
+                                        </select>
+                                    </div>
+                                </td>
+                            </tr>
+                        </table>
+                    </div>
+                    <div class="pbBody">
+                        <table class="list supervisorAgents"
+                        id="j_id0:j_id13:agentPanel" border="0"
+                        cellpadding="0" cellspacing="0">
+                            <colgroup span="7"></colgroup>
+                            <thead class="">
+                                <tr class=" headerRow ">
+                                    <th class=" headerRow  " scope="col"
+                                    colspan="1" id="j_id0:j_id13:agentPanel:j_id15header">
+                                        <div id="j_id0:j_id13:agentPanel:j_id15header:sortDiv">Agent Name</div>
+                                    </th>
+                                    <th class=" headerRow  " scope="col"
+                                    colspan="1" id="j_id0:j_id13:agentPanel:j_id16header">
+                                        <div id="j_id0:j_id13:agentPanel:j_id16header:sortDiv">Status</div>
+                                    </th>
+                                    <th class=" headerRow  " scope="col"
+                                    colspan="1" id="j_id0:j_id13:agentPanel:j_id17header">
+                                        <div id="j_id0:j_id13:agentPanel:j_id17header:sortDiv">Action</div>
+                                    </th>
+                                    <th class=" headerRow  " scope="col"
+                                    colspan="1" id="j_id0:j_id13:agentPanel:j_id18header">
+                                        <div id="j_id0:j_id13:agentPanel:j_id18header:sortDiv">No. Chats in Progress</div>
+                                    </th>
+                                    <th class=" headerRow  " scope="col"
+                                    colspan="1" id="j_id0:j_id13:agentPanel:j_id19header">
+                                        <div id="j_id0:j_id13:agentPanel:j_id19header:sortDiv">No. Requests Assigned</div>
+                                    </th>
+                                    <th class=" headerRow  " scope="col"
+                                    colspan="1" id="j_id0:j_id13:agentPanel:j_id20header">
+                                        <div id="j_id0:j_id13:agentPanel:j_id20header:sortDiv">Time Elapsed Since Login</div>
+                                    </th>
+                                    <th class=" headerRow  " scope="col"
+                                    colspan="1" id="j_id0:j_id13:agentPanel:j_id21header">
+                                        <div id="j_id0:j_id13:agentPanel:j_id21header:sortDiv">Time Elapsed Since Last Accept</div>
+                                    </th>
+                                </tr>
+                            </thead>
+                            <tbody id="j_id0:j_id13:agentPanel:tb"></tbody>
+                        </table>
+                    </div>
+                    <div class="pbFooter secondaryPalette">
+                        <div class="bg"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+     <div id="LA_AgentStatus_Selector">H</div>
+        <script type="text/javascript">
+function startPanel()
+{
+    SfdcApp.LiveAgent.Supervisor.initPanel(
+        {
+            "00590000002tEhT": "Dennis Ritchie",
+            "00590000002rpoL": "farooq ahmed"
+        },
+        {
+            "57390000000TPbW": "Button2",
+            "57390000000TPWP": "New Button"
+        },
+        {
+            "57390000000TPbW": [
+                "0C590000000TPfN",
+                "0C590000000TPaS"
+            ],
+            "57390000000TPWP": [
+                "0C590000000TPaD",
+                "0C590000000TPfN",
+                "0C590000000TPaS"
+            ]
+        },
+        {
+            "0C590000000TPaD": "Accounting",
+            "0C590000000TPfN": "Marketing",
+            "0C590000000TPaS": "Technical"
+        },
+        {
+            "0C590000000TPaD":
+            {
+                "00590000002rpoL": "farooq ahmed"
+            },
+            "0C590000000TPfN":
+            {
+                "00590000002tEhT": "Dennis Ritchie",
+                "00590000002rpoL": "farooq ahmed"
+            },
+            "0C590000000TPaS":
+            {
+                "00590000002tEhT": "Dennis Ritchie",
+                "00590000002rpoL": "farooq ahmed"
+            }
+        },
+        "https://d.la1t1.salesforceliveagent.com/chat",
+        "https://c.la1t1.salesforceliveagent.com/content",
+        "00D90000000xZQM",
+        "{!$api.Session_id}"
+    );
+    initDefaultAgentStatus();
+    initDefaultSkill();
+    initDefaultButton();
+    SfdcApp.LiveAgent.Supervisor.filterQueues();
+    SfdcApp.LiveAgent.Supervisor.filterAgents();
+};
+
+function initDefaultSkill()
+{
+    var supervisorDefaultSkill = "";
+    if (!Sfdc.isEmpty(
+            supervisorDefaultSkill))
+    {
+        var skillSel = Sfdc.get(
+            supervisorDefaultSkill, Sfdc.get(
+                ".LA_Skill_Selector"));
+        if (Sfdc.isDefAndNotNull(skillSel))
+        {
+            Sfdc.Dom.set(skillSel, "selected",
+                "true");
+        }
+    }
+}
+
+function initDefaultButton()
+{
+    var supervisorDefaultButton = "";
+    if (!Sfdc.isEmpty(
+            supervisorDefaultButton))
+    {
+        var buttonSel = Sfdc.get(
+            supervisorDefaultButton, Sfdc.get(
+                ".LA_Queue_Selector"));
+        if (Sfdc.isDefAndNotNull(buttonSel))
+        {
+            Sfdc.Dom.set(buttonSel, "selected",
+                "true");
+        }
+    }
+}
+
+function initDefaultAgentStatus()
+{
+    var supervisorDefaultAgentStatus =
+        "Online";
+    if (!Sfdc.isEmpty(
+            supervisorDefaultAgentStatus))
+    {
+        var agentStatusSel = Sfdc.get(
+            supervisorDefaultAgentStatus, Sfdc
+            .get(".LA_AgentStatus_Selector"));
+        if (Sfdc.isDefAndNotNull(
+                agentStatusSel))
+        {
+            Sfdc.Dom.set(agentStatusSel,
+                "selected", "true");
+        }
+    }
+}
+
+/* pass in the js prefix to append in front of href property */
+function getJavascriptPrefix()
+{
+    return "javascript:";
+}
+
+/* override page logic to open agent page from supervisor tab if in console */
+function openAgentPage(url)
+{
+    if (window.sforce !== undefined &&
+        sforce.console)
+    {
+        sforce.console.openPrimaryTab(null,
+            url, true);
+    }
+    else
+    {
+        window.location = url;
+    }
+}
+
+
+// Initialize the panel
+Sfdc.onReady(startPanel);
+        </script>
+</apex:page>

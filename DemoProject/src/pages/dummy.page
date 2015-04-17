@@ -1,0 +1,120 @@
+<apex:page >
+  <script src="https://c.la1t1.salesforceliveagent.com/content/g/js/32.0/supervisor.js" type="text/javascript"></script>
+  <script src="/jslibrary/1416323438000/sfdc/LiveAgentSupervisorTab.js" type="text/javascript"></script>
+  <link class="user" href="/sCSS/32.0/sprites/1416965220000/Theme3/default/gc/LiveAgentSupervisor.css" rel="stylesheet" type="text/css" />
+   <script type="text/javascript">
+function startPanel() {
+    SfdcApp.LiveAgent.Supervisor.initPanel({"00590000002tEhT":"Farooq User1","00590000002rpoL":"farooq ahmed"}, {"57390000000TPbW":"Button2","57390000000TPWP":"New Button"}, {"57390000000TPbW":["0C590000000TPfN","0C590000000TPaS"],"57390000000TPWP":["0C590000000TPaD","0C590000000TPfN","0C590000000TPaS"]}, {"0C590000000TPaD":"Accounting","0C590000000TPfN":"Marketing","0C590000000TPaS":"Technical"}, {"0C590000000TPaD":{"00590000002rpoL":"farooq ahmed"},"0C590000000TPfN":{"00590000002tEhT":"Farooq User1","00590000002rpoL":"farooq ahmed"},"0C590000000TPaS":{"00590000002tEhT":"Farooq User1","00590000002rpoL":"farooq ahmed"}}, "https://d.la1t1.salesforceliveagent.com/chat", "https://c.la1t1.salesforceliveagent.com/content", "00D90000000xZQM", "00D90000000xZQM!ARYAQLpM.TTxuV0Q3uJzqFGyPDVW6iUN.g2l_jqysAateCei52mysD2ewh1WgVJ5NPtrMZlJF3VrVrfctcGXIOQU7_0lnwMi");
+    initDefaultAgentStatus();
+    initDefaultSkill();
+    initDefaultButton();
+    SfdcApp.LiveAgent.Supervisor.filterQueues();
+    SfdcApp.LiveAgent.Supervisor.filterAgents();
+};
+
+function initDefaultSkill() {
+    var supervisorDefaultSkill = "";
+    if (!Sfdc.isEmpty(supervisorDefaultSkill)) {
+        var skillSel = Sfdc.get(supervisorDefaultSkill, Sfdc.get(".LA_Skill_Selector"));
+        if (Sfdc.isDefAndNotNull(skillSel)) {
+            Sfdc.Dom.set(skillSel, "selected", "true");
+        }
+    }
+}
+
+function initDefaultButton() {
+    var supervisorDefaultButton = "";
+    if (!Sfdc.isEmpty(supervisorDefaultButton)) {
+        var buttonSel = Sfdc.get(supervisorDefaultButton, Sfdc.get(".LA_Queue_Selector"));
+        if (Sfdc.isDefAndNotNull(buttonSel)) {
+            Sfdc.Dom.set(buttonSel, "selected", "true");
+        }
+    }
+}
+
+function initDefaultAgentStatus() {
+    var supervisorDefaultAgentStatus = "Online";
+    if (!Sfdc.isEmpty(supervisorDefaultAgentStatus)) {
+        var agentStatusSel = Sfdc.get(supervisorDefaultAgentStatus, Sfdc.get(".LA_AgentStatus_Selector"));
+        if (Sfdc.isDefAndNotNull(agentStatusSel)) {
+            Sfdc.Dom.set(agentStatusSel, "selected", "true");
+        }
+    }
+}
+
+/* pass in the js prefix to append in front of href property */
+function getJavascriptPrefix() {
+    return "javascript:";
+}
+
+/* override page logic to open agent page from supervisor tab if in console */
+function openAgentPage(url) {
+    if (window.sforce !== undefined && sforce.console) {
+         sforce.console.openPrimaryTab(null,url,true);
+    } else {
+        window.location = url;
+    }
+}
+
+
+// Initialize the panel
+Sfdc.onReady(startPanel);
+</script>
+<script type="text/javascript">function bodyOnLoad(){setFocusOnLoad();if (typeof(startSessionTimer)!='undefined') {startSessionTimer(); };if (typeof(ActivityReminder)!='undefined') {ActivityReminder.initialize([], false, false);};if ((window.sfdcPage) && (sfdcPage.executeOnloadQueue)){sfdcPage.executeOnloadQueue();};; if (this.loadChatFrameJs) loadChatFrameJs();if(window.PreferenceBits){window.PreferenceBits.prototype.csrfToken="0wieBNwGhoWD7ZsckEgg.cuiKjPfCHNnWJqVCIL55yStxgsgXeRByqXcTvMA_2u8NVB4C_RMXkpcSisgubRCT4g.lmfOvMi2u9b9Qnuc02GN5m20IF437KBmupY9mHj_t5nF5GLOHcotQlO9LcvvndB_A5VwHqo1J2VZa.TL_zOP4o3QyilIefRfGybMy7TOdihbqQ==";};}function bodyOnBeforeUnload(){if ((window.sfdcPage) && (sfdcPage.executeOnBeforeUnloadQueue)){sfdcPage.executeOnBeforeUnloadQueue();};}function bodyOnFocus(){closePopupOnBodyFocus();}function bodyOnUnload(){}</script><script>var SFDCSessionVars={"uid":"00590000002rpoL","exp":1418325657000,"host":"login.salesforce.com","oid":"00D90000000xZQM","server":"https://login.salesforce.com/login/sessionserver190.html","act":"u"};</script>
+<script>var s=document.createElement('SCRIPT');s.async=true;s.defer=true;s.src='/jslibrary/1416323438000/sfdc/SfdcSessionBase190.js';(document.body||document.getElementsByTagName('script')[0]).appendChild(s);</script>
+<div class="pbBody">
+    <table class="list supervisorQueues" id="j_id0:j_id7:queuePanel" border="0" cellpadding="0" cellspacing="0">
+        <colgroup span="4"></colgroup>
+        <thead class="">
+            <tr class=" headerRow ">
+                <th class=" headerRow  " scope="col" colspan="1" id="j_id0:j_id7:queuePanel:j_id9header">
+                    <div id="j_id0:j_id7:queuePanel:j_id9header:sortDiv">Button Name</div>
+                </th>
+                <th class=" headerRow  " scope="col" colspan="1" id="j_id0:j_id7:queuePanel:j_id10header">
+                    <div id="j_id0:j_id7:queuePanel:j_id10header:sortDiv">ID</div>
+                </th>
+                <th class=" headerRow  " scope="col" colspan="1" id="j_id0:j_id7:queuePanel:j_id11header">
+                    <div id="j_id0:j_id7:queuePanel:j_id11header:sortDiv">Queue Length</div>
+                </th>
+                <th class=" headerRow  " scope="col" colspan="1" id="j_id0:j_id7:queuePanel:j_id12header">
+                    <div id="j_id0:j_id7:queuePanel:j_id12header:sortDiv">Longest Wait</div>
+                </th>
+            </tr>
+        </thead>
+        <tbody id="j_id0:j_id7:queuePanel:tb"></tbody>
+    </table>
+</div>
+<div class="pbBody">
+            <table class="list supervisorAgents" id="j_id0:j_id13:agentPanel" border="0" cellpadding="0" cellspacing="0">
+                <colgroup span="7"></colgroup>
+                <thead class="">
+                    <tr class=" headerRow ">
+                        <th class=" headerRow  " scope="col" colspan="1" id="j_id0:j_id13:agentPanel:j_id15header">
+                            <div id="j_id0:j_id13:agentPanel:j_id15header:sortDiv">Agent Name</div>
+                        </th>
+                        <th class=" headerRow  " scope="col" colspan="1" id="j_id0:j_id13:agentPanel:j_id16header">
+                            <div id="j_id0:j_id13:agentPanel:j_id16header:sortDiv">Status</div>
+                        </th>
+                        <th class=" headerRow  " scope="col" colspan="1" id="j_id0:j_id13:agentPanel:j_id17header">
+                            <div id="j_id0:j_id13:agentPanel:j_id17header:sortDiv">Action</div>
+                        </th>
+                        <th class=" headerRow  " scope="col" colspan="1" id="j_id0:j_id13:agentPanel:j_id18header">
+                            <div id="j_id0:j_id13:agentPanel:j_id18header:sortDiv">No. Chats in Progress</div>
+                        </th>
+                        <th class=" headerRow  " scope="col" colspan="1" id="j_id0:j_id13:agentPanel:j_id19header">
+                            <div id="j_id0:j_id13:agentPanel:j_id19header:sortDiv">No. Requests Assigned</div>
+                        </th>
+                        <th class=" headerRow  " scope="col" colspan="1" id="j_id0:j_id13:agentPanel:j_id20header">
+                            <div id="j_id0:j_id13:agentPanel:j_id20header:sortDiv">Time Elapsed Since Login</div>
+                        </th>
+                        <th class=" headerRow  " scope="col" colspan="1" id="j_id0:j_id13:agentPanel:j_id21header">
+                            <div id="j_id0:j_id13:agentPanel:j_id21header:sortDiv">Time Elapsed Since Last Accept</div>
+                        </th>
+                    </tr>
+                </thead>
+                <tbody id="j_id0:j_id13:agentPanel:tb"></tbody>
+            </table>
+          </div>      
+
+
+</apex:page>

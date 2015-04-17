@@ -1,0 +1,261 @@
+<apex:page sidebar="false" controller="ImplSupervisorController" action="{!onload}">
+
+<script src="https://c.la1t1.salesforceliveagent.com/content/g/js/32.0/supervisor.js" type="text/javascript"></script>
+<script src="/jslibrary/1416323438000/sfdc/LiveAgentSupervisorTab.js"  type="text/javascript"></script>
+  <script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>   
+<!--<script src="/jslibrary/1416323438000/sfdc/main.js" type="text/javascript"></script>
+
+<script src="/jslibrary/jslabels/1417626712000/en_US.js" type="text/javascript"></script>-->
+<style>
+body .pbBody table.list tr.dataRow.LA_Available.highlight td, body .pbBody table.list tr.dataRow.LA_Available.highlight th {
+background-color: #BAE06C;
+}
+</style>
+<link class="user" href="/sCSS/32.0/sprites/1416965220000/Theme3/default/gc/LiveAgentSupervisor.css" rel="stylesheet" type="text/css" />
+
+<script type="text/javascript">
+
+
+  $(document).ready(function(){
+  
+  
+   
+    
+     $(".LA_Row_Expansion_Toggle").click(function(){
+     
+        var img_tag=document.getElementsByTagName('img');
+        alert(img_tag.length);
+        
+        var x='"'+img_tag[1].src+'"';
+        
+        
+
+       
+        var z=x.substring(36,60); 
+        alert(z); 
+       
+      img_tag[1].src="../liveagent"+z;
+        
+        
+     });
+  
+  });
+
+function startPanel() {
+
+    SfdcApp.LiveAgent.Supervisor.initPanel({"00590000002tEhT":"Farooq","00590000002rpoL":"farooq ahmed"}, {"57390000000TPWP":"New Button"}, {"57390000000TPWP":["0C590000000TPaD","0C590000000TPaS"]}, {"0C590000000TPaD":"Accounting","0C590000000TPaS":"Technical"}, {"0C590000000TPaD":{"00590000002rpoL":"farooq ahmed"},"0C590000000TPaS":{"00590000002tEhT":"Farooq User1","00590000002rpoL":"farooq ahmed"}}, "https://d.la1t1.salesforceliveagent.com/chat", "https://c.la1t1.salesforceliveagent.com/content", "00D90000000xZQM", "{!$Api.Session_ID}");
+      var rows=document.getElementsByClassName('dataRow');
+      var cell=document.getElementsByClassName('dataCell');
+      
+      var chartTable=document.getElementByClassName('list');
+      
+         console.log(chartTable[0]);
+    
+      
+      var arrayphoto=JSON.parse('{!JsonPhoto}');
+      
+      
+      
+      var anchor=document.getElementsByTagName("a");
+    
+    
+     
+     var xsize=4;
+     var j=0;
+     var k=0;
+      for(var i in arrayphoto)
+      {    
+        
+        
+        
+       var img=document.createElement('img');
+       var x=anchor[xsize].toString();
+       
+        var y=x.substring(27,42);
+       img.src=arrayphoto[y];
+       
+      
+       
+       var td=document.createElement('td');
+       td.appendChild(img);
+       rows[j].insertBefore(td,cell[k]);
+       xsize=xsize+4;
+       j++;
+       k=k+7;
+    
+      }
+      
+    initDefaultAgentStatus();
+    initDefaultSkill();
+    initDefaultButton();
+    SfdcApp.LiveAgent.Supervisor.filterQueues();
+    SfdcApp.LiveAgent.Supervisor.filterAgents();
+};
+
+
+function initDefaultSkill() {
+    var supervisorDefaultSkill = "";
+    if (!Sfdc.isEmpty(supervisorDefaultSkill)) {
+        var skillSel = Sfdc.get(supervisorDefaultSkill, Sfdc.get(".LA_Skill_Selector"));
+        if (Sfdc.isDefAndNotNull(skillSel)) {
+            Sfdc.Dom.set(skillSel, "selected", "true");
+        }
+    }
+}
+
+
+function initDefaultButton() {
+    var supervisorDefaultButton = "";
+    if (!Sfdc.isEmpty(supervisorDefaultButton)) {
+        var buttonSel = Sfdc.get(supervisorDefaultButton, Sfdc.get(".LA_Queue_Selector"));
+        if (Sfdc.isDefAndNotNull(buttonSel)) {
+            Sfdc.Dom.set(buttonSel, "selected", "true");
+        }
+    }
+}
+
+function initDefaultAgentStatus() {
+    var supervisorDefaultAgentStatus = "Online";
+    if (!Sfdc.isEmpty(supervisorDefaultAgentStatus)) {
+        var agentStatusSel = Sfdc.get(supervisorDefaultAgentStatus, Sfdc.get(".LA_AgentStatus_Selector"));
+        if (Sfdc.isDefAndNotNull(agentStatusSel)) {
+            Sfdc.Dom.set(agentStatusSel, "selected", "true");
+        }
+    }
+}
+
+/* pass in the js prefix to append in front of href property */
+function getJavascriptPrefix() {
+    return "javascript:";
+}
+
+/* override page logic to open agent page from supervisor tab if in console */
+function openAgentPage(url) {
+    if (window.sforce !== undefined && sforce.console) {
+         sforce.console.openPrimaryTab(null,url,true);
+    } else {
+        window.location = url;
+    }
+   
+}
+ 
+
+// Initialize the panel
+Sfdc.onReady(startPanel);
+function clickdisp(){
+console.log(liveagent.supervisor.getAgents()[0]);
+}
+</script>
+
+<style>
+.headerRow
+{
+padding: 12px;
+}
+</style>
+<body>
+<div class="pbHeader">
+                <table class="LA_Expanded">
+                <tr>
+                <td class="pbTitle">
+                    <a class="LA_Expansion_Toggle" onclick="SfdcApp.LiveAgent.Supervisor.togglePanel(Sfdc.Dom.getParent(this, 'table'), document.getElementById('j_id0:j_id13:agentPanel').parentNode)">&gt;</a>
+                    <h3 class="mainTitle">Agent Status</h3>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <div class="agentFilterPanel">
+                        <span class="agentFilterPanelTitle">Filters</span>
+                        
+                         
+
+                        <select class="LA_Skill_Selector" onchange="SfdcApp.LiveAgent.Supervisor.filterQueues();SfdcApp.LiveAgent.Supervisor.filterAgents();">
+                            <option id="ANY_OPTION" selected="selected" value="ANY">All Skills</option>
+                        </select>
+
+                        <select class="LA_Queue_Selector" onchange="SfdcApp.LiveAgent.Supervisor.filterAgents();">
+                            <option id="ANY_QUEUE_OPTION" selected="selected" value="ANY">All Buttons</option>
+                        </select>
+
+                        <select class="LA_AgentStatus_Selector" onchange="SfdcApp.LiveAgent.Supervisor.filterAgents();">
+                            <option id="ANY_OPTION" selected="selected" value="ANY">All Statuses</option>
+                            <option id="Online" value="online">Online</option>
+                            <option id="Away" value="away">Away</option>
+                            <option id="Offline" value="offline">Offline</option>
+                        </select>
+                    </div>
+                </td>
+            </tr>
+        </table>
+</div>
+ 
+<div class="pbBody">
+        <table class="list supervisorAgents" id="j_id0:j_id13:agentPanel" border="0" cellpadding="0" cellspacing="0">
+            <colgroup span="7"></colgroup>
+            <thead class="">
+                <tr class="headerRow">
+                    <th class="headerRow" scope="col" colspan="1" id="j_id0:j_id13:agentPanel:j_id14header">
+                        <div id="j_id0:j_id13:agentPanel:j_id15header:sortDiv">Agent Photo</div>
+                    </th>
+                    <th class="headerRow" scope="col" colspan="1" id="j_id0:j_id13:agentPanel:j_id15header">
+                        <div id="j_id0:j_id13:agentPanel:j_id15header:sortDiv">Agent Name</div>
+                    </th>
+                    <th class="headerRow" scope="col" colspan="1" id="j_id0:j_id13:agentPanel:j_id16header">
+                        <div id="j_id0:j_id13:agentPanel:j_id16header:sortDiv">Status</div>
+                    </th>
+                    <th class="headerRow" scope="col" colspan="1" id="j_id0:j_id13:agentPanel:j_id17header">
+                        <div id="j_id0:j_id13:agentPanel:j_id17header:sortDiv">Action</div>
+                    </th>
+                    <th class="headerRow" scope="col" colspan="1" id="j_id0:j_id13:agentPanel:j_id18header">
+                        <div id="j_id0:j_id13:agentPanel:j_id18header:sortDiv">No. Chats in Progress</div>
+                    </th>
+                    <th class="headerRow" scope="col" colspan="1" id="j_id0:j_id13:agentPanel:j_id19header">
+                        <div id="j_id0:j_id13:agentPanel:j_id19header:sortDiv">No. Requests Assigned</div>
+                    </th>
+                    <th class="headerRow" scope="col" colspan="1" id="j_id0:j_id13:agentPanel:j_id20header">
+                        <div id="j_id0:j_id13:agentPanel:j_id20header:sortDiv">Time Elapsed Since Login</div>
+                    </th>
+                    <th class="headerRow" scope="col" colspan="1" id="j_id0:j_id13:agentPanel:j_id21header">
+                        <div id="j_id0:j_id13:agentPanel:j_id21header:sortDiv">Time Elapsed Since Last Accept</div>
+                    </th>
+                </tr>
+            </thead>
+            <tbody id="j_id0:j_id13:agentPanel:tb"><tr><td id="d"></td></tr></tbody>
+        </table>
+    </div>
+    {!$Api.Session_ID}
+ 
+    
+   <br/>
+   <br/>
+    
+   
+<A HREF="#" onClick="testOpenPrimaryTab();return false">
+         Click here to open a new primary tab</A> 
+
+    <apex:includeScript value="/support/console/22.0/integration.js"/>
+    <script type="text/javascript">
+           var x=window.liveagent.supervisor.getAgents();
+         console.log(x);
+        function testOpenPrimaryTab() {
+            //Open a new primary tab with the salesforce.com home page in it
+            sforce.console.openPrimaryTab(null, 'https://ap1.salesforce.com/liveagent/supervisor.apexp?isdtp=nv&nonce=0e04151b899814e24684118e71e5a0b62336285192d6d54b0e6e0ac019a2fdfc&sfdcIFrameOrigin=https%3A%2F%2Fap1.salesforce.com', true, 
+                'salesforce', openSuccess, 'salesforceTab');
+        }
+        
+        var openSuccess = function openSuccess(result) {
+            //Report whether opening the new tab was successful
+            if (result.success == true) {
+                alert('Primary tab successfully opened');
+            } else {
+                alert('Primary tab cannot be opened');
+            }
+        };
+
+  </script>
+  {!usernames}<br/><br/>
+  {!jsonphoto}
+
+<input type="button" onclick="alert(SfdcApp.LiveAgent.Ui.addHighlighting('SfdcApp.LiveAgent.Ui.addHighlighting(#00FFFF)'))"></input>
+</body>
+</apex:page>

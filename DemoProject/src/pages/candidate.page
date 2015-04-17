@@ -1,0 +1,7 @@
+<apex:page standardController="Candidate__c">
+    <apex:pageBlock title="Contact informations.....">
+        <apex:outputLink value="{!URLFOR($Page.AllCandidates,null,  [id='a0b9000000BX0n5'])}">Hello
+                </apex:outputLink>
+    </apex:pageBlock>
+    <apex:detail relatedList="false"/>
+</apex:page>

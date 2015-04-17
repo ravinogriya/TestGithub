@@ -1,0 +1,10 @@
+<apex:page standardController="case" recordSetVar="case">
+ <apex:pageblock >
+     <apex:pageblockTable value="{!case}" var="x">
+      <apex:column value="{!x.subject}" width="100"/>
+      <apex:column value="{!x.casenumber}" width="95"/>
+        <apex:column value="{!x.reason}" width="100"/>
+        <apex:column value="{!x.priority}" width="95"/>
+     </apex:pageblockTable>
+ </apex:pageblock>
+</apex:page>

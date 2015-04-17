@@ -1,0 +1,11 @@
+<apex:page controller="actionFunctionController">
+  <apex:outputPanel id="result">
+      <apex:pageMessages />
+      <a onclick="twoTimesFunction('{!value}')">Run</a>
+  </apex:outputPanel>
+  <apex:form >
+      <apex:actionFunction name="twoTimesFunction" action="{!twoTimes}" reRender="result">
+          <apex:param name="arg1" value="" assignTo="{!value}"/>
+      </apex:actionFunction>
+  </apex:form>
+</apex:page>

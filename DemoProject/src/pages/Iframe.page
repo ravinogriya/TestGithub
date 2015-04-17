@@ -1,0 +1,11 @@
+<apex:page controller="iframecontroller" action="{!pageload}">
+<script>
+alert('{!bodyString}hai');
+
+
+</script>
+<body>
+<div id="display">
+</div>
+</body>
+</apex:page>

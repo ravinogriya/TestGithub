@@ -1,0 +1,14 @@
+<apex:page controller="ChartController">
+    <apex:chart width="450" height="300" data="{!data}">
+        <apex:axis position="left" type="Numeric" fields="data1" title="Values"/>
+        <apex:axis position="bottom" type="Category" fields="name" title="Months"/>
+        <apex:lineSeries axis="left" fill="true" xField="name" yField="data1" markerType="cross" markerSize="4" markerFill="#FF0000">
+        </apex:lineSeries>
+    </apex:chart>
+    <apex:chart width="700" height="300" data="{!data}">
+        <apex:axis position="left" type="Numeric" fields="data1,data2" title="Opportunity Closed"/>
+        <apex:axis position="bottom" type="Category" fields="name" Title="Months of Year"/>
+        <apex:lineSeries axis="left" fill="true" xField="name" yField="data1" markerSize="2" markerType="cross"/>
+        <apex:lineSeries axis="bottom" fill="true" xField="name" yField="data2" markerFill="5" markerType="cross"/>
+    </apex:chart>
+</apex:page>

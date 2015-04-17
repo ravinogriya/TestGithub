@@ -1,0 +1,24 @@
+<apex:page controller="opportunityList2Con">
+<apex:form >
+    <apex:pageBlock >
+        <apex:pageBlockTable value="{!cases}" var="o" >
+            <apex:column value="{!o.casenumber}" width="5" />
+            <apex:column value="{!o.subject}" width="5"/>
+           
+        </apex:pageBlockTable>
+        <center> 
+            <apex:commandButton action="{!first}" value="First"/>
+            <apex:commandButton action="{!previous}" value="Previous"/>
+            <apex:commandButton action="{!next}" value="Next" title="Next" />
+            <apex:commandButton action="{!last}" value="Last"/>
+        </center>
+    </apex:pageBlock>
+    
+    <apex:dataTable value="{!cases}" var="s" border="solid">
+           <apex:column value="{!s.casenumber}" width="300" />
+           <apex:column value="{!s.subject}" width="300"/>
+    </apex:dataTable>
+    
+    
+</apex:form>
+</apex:page>
